@@ -1,0 +1,20 @@
+defaults: &defaults
+  adapter: postgresql
+  encoding: unicode
+  host: 127.0.0.1
+  pool: #{(ENV['DB_POOL'] || 5).to_i}
+  timeout: 10000
+  prepared_statements: false
+
+test:
+  <<: *defaults
+  database: benchmark_test
+
+development:
+  <<: *defaults
+  database: benchmark_development
+
+production:
+  <<: *defaults
+  database: benchmark_production
+
